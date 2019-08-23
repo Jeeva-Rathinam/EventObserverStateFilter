@@ -9,7 +9,7 @@
 
             foreach($items as $item)
             {
-		        $sku = $item->getSku();
+		$sku = $item->getSku();
                 $name= $item->getName();
                 $qty = $item->getQtyOrdered();
                 $price = $item->getPrice();
