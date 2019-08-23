@@ -17,7 +17,7 @@
                 // get shipping state
                 $shipping_state = $Observer->getEvent()->getOrder()->getShippingAddress()->getRegion();
 
-                if($shipping_state == 'Chicago')
+                if($shipping_state == 'Tamil Nadu')
                 {
                     $order_details = ['sku' => $sku, 'name' => $name, 'qty' => $qty, 'price' => $price, 'shipping_state' => $shipping_state ];
                     Mage::log(json_encode(print_r($order_details, true)), null, 'order_from_chicago.log', true);
