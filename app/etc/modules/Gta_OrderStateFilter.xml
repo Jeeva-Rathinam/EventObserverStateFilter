@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gta_OrderStateFilter>
+            <codePool>local</codePool>
+            <active>true</active>
+        </Gta_OrderStateFilter>
+    </modules>
+</config>

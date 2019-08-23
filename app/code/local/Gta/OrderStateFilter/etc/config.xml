@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Gta_OrderStateFilter>
+            <version>1.0.0</version>
+        </Gta_OrderStateFilter>
+    </modules>
+    <global>
+        <models>
+            <gta_orderstatefilter>
+                <class>Gta_OrderStateFilter_Model</class>
+            </gta_orderstatefilter>
+        </models>
+        <events>
+            <checkout_submit_all_after>
+                <observers>
+                    <Gta_OrderStateFilter_Model_Observer>
+                        <type>singleton</type>
+                        <class>Gta_OrderStateFilter_Model_Observer</class>
+                        <method>putstatefilteronorder</method>
+                    </Gta_OrderStateFilter_Model_Observer>
+                </observers>
+            </checkout_submit_all_after>
+        </events>
+    </global>
+</config>
