@@ -1,26 +1,21 @@
 <?php
     class Gta_OrderStateFilter_Model_Observer
     {
-        public function PutStateFilterOnOrder($Observer)
+        public function putstatefilteronorder($Observer)
         {
-            // get order 
             $order = $Observer->getEvent()->getOrder();
             $items = $order->getAllItems();
 
-            foreach($items as $item)
-            {
-		$sku = $item->getSku();
+            foreach($items as $item){
+		        $sku = $item->getSku();
                 $name= $item->getName();
                 $qty = $item->getQtyOrdered();
                 $price = $item->getPrice();
-
-                // get shipping state
-                $shipping_state = $Observer->getEvent()->getOrder()->getShippingAddress()->getRegion();
-
-                if($shipping_state == 'Tamil Nadu')
+                $shipping_state = $Observer->getEvent()->getOrder()->getShippingAddress();
+                if($shipping_state->getRegion() == 'Illinois' && $shipping_state->getCity() == 'Chicago')
                 {
-                    $order_details = ['sku' => $sku, 'name' => $name, 'qty' => $qty, 'price' => $price, 'shipping_state' => $shipping_state ];
-                    Mage::log(json_encode(print_r($order_details, true)), null, 'order_from_chicago.log', true);
+                   $loggerInfo = ['sku' => $sku, 'name' => $name, 'qty' => $qty, 'price' => $price, 'shipping_state' => $shipping_state->getRegion(), 'shipping_city' => $shipping_state->getCity() ];
+                    Mage::log(json_encode(print_r($loggerInfo, true)), null, 'order_from_chicago.log', true);
                 }
             }
             ### start test observer ###
